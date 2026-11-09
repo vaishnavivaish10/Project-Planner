@@ -54,6 +54,9 @@ Thumbs.db
 
 *.env
 
+# Plaintext sample account credentials
+credentials.txt
+
 
 # py cache
 

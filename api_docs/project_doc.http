@@ -1,0 +1,139 @@
+###list all projects
+GET http://127.0.0.1:8000/projects/
+
+###create a project
+POST http://127.0.0.1:8000/projects/
+Content-Type: multipart/form-data;boundary=abc
+
+--abc
+content-Disposition: From-data; name="name"
+
+BookNest - Online Library Management System
+--abc
+content-Disposition: From-data; name="description"
+
+<h2>BookNest - Online Library Management System</h2>
+
+<p>
+BookNest is a comprehensive Django-based Online Library Management System designed
+to streamline book catalog management, member registration, borrowing workflows,
+reservations, and reporting. The platform provides role-based access for administrators,
+librarians, and members, enabling efficient library operations through a modern
+web interface and RESTful APIs.
+</p>
+
+<h3>Key Features</h3>
+<ul>
+    <li>User Authentication & Authorization</li>
+    <li>Book and Category Management</li>
+    <li>ISBN Tracking and Inventory Control</li>
+    <li>Borrow and Return Management</li>
+    <li>Book Reservation System</li>
+    <li>Advanced Search & Filtering</li>
+    <li>User Reviews and Ratings</li>
+    <li>Admin Dashboard with Analytics</li>
+    <li>Django REST Framework API Support</li>
+    <li>CKEditor-based Content Management</li>
+</ul>
+
+<h3>Technology Stack</h3>
+<ul>
+    <li>Django</li>
+    <li>Django REST Framework</li>
+    <li>MySQL</li>
+    <li>Bootstrap 5</li>
+    <li>CKEditor 5</li>
+    <li>JWT Authentication</li>
+</ul>
+
+<h3>Benefits</h3>
+<p>
+BookNest improves operational efficiency, simplifies inventory tracking,
+enhances user experience, and provides detailed reports for better decision-making.
+</p>
+--abc
+Content-Disposition: form-data; name="document"; filename="Booknestdoc.pdf"
+Content-Type: application/pdf
+
+"C:\Users\DELL\Downloads\Booknestdoc.pdf"
+--abc--
+
+###retrieve a project
+GET http://127.0.0.1:8000/projects/519f6c8d-989d-43c8-a04f-403121155ff6/
+
+###update a project
+PATCH  http://127.0.0.1:8000/projects/519f6c8d-989d-43c8-a04f-403121155ff6/
+Content-Type: multipart/form-data;boundary=abc
+
+--abc
+content-Disposition: From-data; name="name"
+
+SkillBridge - A Learning Platform
+--abc--
+
+###delete a project
+DELETE  http://127.0.0.1:8000/projects/519f6c8d-989d-43c8-a04f-403121155ff6/
+
+###list all assigned projects
+GET http://127.0.0.1:8000/assigned-projects/
+
+###create an assigned project
+POST http://127.0.0.1:8000/assigned-projects/
+Content-Type: application/json
+
+{
+  "project": 2,
+  "coordinator": 2,
+  "developers": [4, 5, 6],
+  "project_duration": 6,
+  "project_start_date": "2026-11-03",
+  "project_tentative_end_date": "2027-01-02"
+}
+
+###list all assigned projects
+GET http://127.0.0.1:8000/assigned-projects/4749d242-0efe-4660-8616-8d2c2c5e4c2c/
+
+###update an assigned project
+PATCH  http://127.0.0.1:8000/assigned-projects/4749d242-0efe-4660-8616-8d2c2c5e4c2c/
+Content-Type: application/json
+
+{
+    "developers": [6,4,5,9]
+}
+
+###delete a project
+DELETE  http://127.0.0.1:8000/assigned-projects/4749d242-0efe-4660-8616-8d2c2c5e4c2c/
+
+###retrive all assigned projects
+GET http://127.0.0.1:8000/tasks/4749d242-0efe-4660-8616-8d2c2c5e4c2c/
+
+### create a task
+POST http://127.0.0.1:8000/tasks/4749d242-0efe-4660-8616-8d2c2c5e4c2c/
+Content-Type: application/json
+
+{
+  "assigned_to": 6,
+  "title": "Design the project dashboard",
+  "description": "Create the initial dashboard layout.",
+  "priority": "Medium"
+}
+
+###retrive a task
+GET http://127.0.0.1:8000/tasks-retrieve-update-destroy/5defb7d2-7ec9-4e1c-8295-0dbbe41709fd/
+
+###update a task
+PATCH  http://127.0.0.1:8000/tasks-retrieve-update-destroy/5defb7d2-7ec9-4e1c-8295-0dbbe41709fd/
+Content-Type: application/json
+
+{
+ 
+  "duration": "02:00:00",
+  "start_date": "2026-11-06",
+  "end_date": "2026-11-07"
+}
+
+###delete a task
+GET http://127.0.0.1:8000/tasks-retrieve-update-destroy/5defb7d2-7ec9-4e1c-8295-0dbbe41709fd/
+
+###generate a tasks
+POST http://127.0.0.1:8000/generate-tasks/4749d242-0efe-4660-8616-8d2c2c5e4c2c/
